@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <h1>Vue3 Learning</h1>
+
+    <div id="app">
+        <div v-if="showBook">
+            <h2>{{title}}</h2>
+            <h4>author - {{author}}</h4>
+            <h4>author age is {{age}}</h4>
+        </div>
+        <button v-on:click="increaseAge">IncreaseAge</button>
+        <button v-on:click="author='KTZ'">Change name</button>
+        <button @click="showBook=!showBook">
+            <span v-if="showBook">hide</span>
+            <span v-if="!showBook">show</span>
+            book
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
