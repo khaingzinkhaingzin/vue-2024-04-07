@@ -6,23 +6,50 @@
     <title>Document</title>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        .box {
+            padding: 100px;
+            display: inline-block;
+            margin: 30px;
+            background-color: pink;
+        }
+        li {
+            list-style: none;
+        }
+        .favorite {
+            background-color: #30d475;
+        }
+    </style>
 </head>
 <body>
     <h1>Vue3 Learning</h1>
 
     <div id="app">
         <div v-if="showBook">
-            <h2>{{title}}</h2>
-            <h4>author - {{author}}</h4>
-            <h4>author age is {{age}}</h4>
+            <ul v-for="book in filteredBooks">
+                <li :class="{favorite:book.isFav}" @click="clickHandler(book)">
+                    <img :src="book.img" alt="" width="100">
+                    <p>{{book.title}}</p>
+                    <p>author - {{book.author}}</p>
+                    <p>author age is {{book.age}}</p>
+                    <hr />
+                </li>
+            </ul>
         </div>
-        <button v-on:click="increaseAge">IncreaseAge</button>
-        <button v-on:click="author='KTZ'">Change name</button>
         <button @click="showBook=!showBook">
             <span v-if="showBook">hide</span>
             <span v-if="!showBook">show</span>
             book
         </button>
+
+        <br />
+
+        <div class="box" @mouseover="mouseoverHandler($event, 'data')">Mouse over</div>
+        <div class="box" @mouseleave="mouseleaveHandler">Mouse leave</div>
+        <div class="box" @dblclick="dblclickHandler">Double click</div>
+
+        <a :href="link">Google</a>
     </div>
 
     <script src="app.js"></script>
